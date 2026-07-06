@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html class="dark" lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Daros Metaal - Precision Engineering Excellence</title>
+<meta name="description" content="Daros Metaal in Valkenswaard: specialist in fijnmechanische onderdelen en seriematig draai- en freeswerk. CNC draaien, frezen en speciaalwerk."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#2e3132",
+                        "slate-gray": "rgb(var(--card) / <alpha-value>)",
+                        "on-tertiary-fixed": "#001c38",
+                        "bronze-mute": "#8C6A12",
+                        "surface-container-high": "#EFEBE4",
+                        "surface-dim": "#0C0A06",
+                        "secondary-fixed-dim": "#c5c7c8",
+                        "primary-container": "#c59118",
+                        "deep-charcoal": "#0A0B0C",
+                        "error-container": "#93000a",
+                        "outline-variant": "rgb(var(--line) / <alpha-value>)",
+                        "primary-fixed-dim": "#f7bd46",
+                        "inverse-on-surface": "#ece1d4",
+                        "surface-container-low": "rgb(var(--sc-low) / <alpha-value>)",
+                        "secondary": "#c5c7c8",
+                        "surface": "rgb(var(--bg) / <alpha-value>)",
+                        "surface-bright": "#FFFFFF",
+                        "surface-variant": "#EDE9E1",
+                        "surface-container": "#F0ECE5",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#004880",
+                        "on-surface": "rgb(var(--on-bg) / <alpha-value>)",
+                        "industrial-gold": "rgb(var(--gold) / <alpha-value>)",
+                        "background": "rgb(var(--bg) / <alpha-value>)",
+                        "tertiary-fixed": "#d2e4ff",
+                        "tertiary-container": "#5e9de6",
+                        "on-primary-fixed": "#271900",
+                        "primary-fixed": "#ffdea6",
+                        "on-secondary-fixed": "#191c1d",
+                        "surface-container-highest": "rgb(var(--sc-high) / <alpha-value>)",
+                        "outline": "rgb(var(--line2) / <alpha-value>)",
+                        "on-tertiary-container": "#00335d",
+                        "on-secondary-fixed-variant": "#444748",
+                        "on-primary-fixed-variant": "#5d4200",
+                        "surface-container-lowest": "rgb(var(--sc-lowest) / <alpha-value>)",
+                        "inverse-primary": "#7b5800",
+                        "on-surface-variant": "rgb(var(--on-var) / <alpha-value>)",
+                        "inverse-surface": "#ece1d4",
+                        "secondary-container": "#323536",
+                        "error": "rgb(var(--error) / <alpha-value>)",
+                        "on-background": "rgb(var(--on-bg) / <alpha-value>)",
+                        "on-error": "#690005",
+                        "surface-tint": "#f7bd46",
+                        "secondary-fixed": "#e1e3e4",
+                        "on-tertiary": "#00325b",
+                        "tertiary-fixed-dim": "#a1c9ff",
+                        "primary": "rgb(var(--primary) / <alpha-value>)",
+                        "on-primary-container": "#432e00",
+                        "tertiary": "#a1c9ff",
+                        "on-primary": "#412d00",
+                        "on-secondary-container": "#b6b9ba"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "section-gap": "120px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Inter"],
+                        "label-tech": ["JetBrains Mono"],
+                        "title-md": ["Hanken Grotesk"],
+                        "caption": ["Inter"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-tech": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "title-md": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+                        "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "headline-lg-mobile": ["28px", { lineHeight: "34px", fontWeight: "700" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<script>
+        // Zet het opgeslagen thema zo vroeg mogelijk (standaard: licht).
+        (function () {
+            try {
+                var saved = localStorage.getItem("daros-theme");
+                if (saved === "dark") {
+                    document.documentElement.setAttribute("data-theme", "dark");
+                }
+            } catch (e) {}
+        })();
+    </script>
+<style>
+        /* ==========================================================
+           THEMA-VARIABELEN
+           Licht = standaard (:root). Donker = [data-theme="dark"].
+           Waarden zijn "R G B" zodat Tailwind's /opacity blijft werken.
+           De Tailwind-tokens verwijzen via rgb(var(--x)) naar deze.
+           ========================================================== */
+        :root {
+            --bg: 244 242 238;          /* achtergrond, warm gebroken wit */
+            --on-bg: 35 32 27;          /* donkere tekst */
+            --on-var: 92 87 78;         /* gedempte tekst */
+            --card: 255 255 255;        /* kaart / invoerveld */
+            --line: 216 210 199;        /* randen */
+            --line2: 110 106 95;        /* kleine labels */
+            --sc-high: 236 232 225;
+            --sc-low: 238 234 226;
+            --sc-lowest: 233 228 219;
+            --gold: 165 118 10;         /* industrieel goud */
+            --primary: 133 95 8;        /* goud (hover, dieper) */
+            --error: 179 38 30;
+
+            --card-border: 226 220 209;
+            --card-shadow: 0 1px 2px rgba(35, 32, 27, 0.04);
+            --card-hover-bg: 251 250 247;
+            --card-hover-shadow: 0 6px 20px rgba(35, 32, 27, 0.08);
+            --input-bg: 251 250 247;
+            --input-line: 201 194 181;
+            --input-focus-bg: 241 237 229;
+            --placeholder: 154 146 132;
+        }
+        [data-theme="dark"] {
+            --bg: 12 10 6;              /* origineel bijna-zwart */
+            --on-bg: 236 225 212;
+            --on-var: 211 196 175;
+            --card: 30 33 34;           /* slate-gray */
+            --line: 61 53 40;
+            --line2: 133 122 104;
+            --sc-high: 40 36 30;
+            --sc-low: 18 16 11;
+            --sc-lowest: 8 6 3;
+            --gold: 197 145 24;
+            --primary: 247 189 70;
+            --error: 255 180 171;
+
+            --card-border: 61 53 40;
+            --card-shadow: none;
+            --card-hover-bg: 40 36 30;
+            --card-hover-shadow: none;
+            --input-bg: 30 33 34;
+            --input-line: 61 53 40;
+            --input-focus-bg: 40 36 30;
+            --placeholder: 133 122 104;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: rgb(var(--bg));
+            color: rgb(var(--on-bg));
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Offset for the fixed navbar when jumping to an anchor */
+        section[id], header[id] {
+            scroll-margin-top: 120px;
+        }
+
+        .industrial-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .industrial-list li::before {
+            content: "Ø";
+            position: absolute;
+            left: 0;
+            color: rgb(var(--gold));
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        .bento-card {
+            background-color: rgb(var(--card));
+            border: 1px solid rgb(var(--card-border));
+            box-shadow: var(--card-shadow);
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .bento-card:hover {
+            border-top: 1px solid rgb(var(--gold));
+            background-color: rgb(var(--card-hover-bg));
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .input-industrial {
+            background-color: rgb(var(--input-bg));
+            border: none;
+            border-bottom: 1px solid rgb(var(--input-line));
+            color: rgb(var(--on-bg));
+            transition: all 0.3s ease;
+        }
+        .input-industrial::placeholder { color: rgb(var(--placeholder)); }
+        .input-industrial:focus {
+            outline: none;
+            border-bottom: 2px solid rgb(var(--gold));
+            box-shadow: none;
+            background-color: rgb(var(--input-focus-bg));
+        }
+        .input-industrial.invalid {
+            border-bottom: 2px solid rgb(var(--error));
+        }
+
+        /* Active nav link state */
+        .nav-link.active {
+            color: rgb(var(--gold));
+        }
+
+        /* Thema-schakelaar knop */
+        #theme-toggle {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+        #theme-toggle:hover { transform: translateY(-2px); }
+        #theme-toggle .icon-dark { display: none !important; }
+        [data-theme="dark"] #theme-toggle .icon-light { display: none !important; }
+        [data-theme="dark"] #theme-toggle .icon-dark { display: inline-flex !important; }
+
+        /* Mobile menu animation */
+        #mobile-menu {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #mobile-menu.hidden-menu {
+            opacity: 0;
+            transform: translateY(-8px);
+            pointer-events: none;
+        }
+
+        /* Reveal-on-scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-industrial-gold selection:text-deep-charcoal">
+<!-- Thema-schakelaar (licht <-> donker) -->
+<button id="theme-toggle" type="button" aria-label="Wissel tussen licht en donker design" class="fixed bottom-6 right-6 z-[60] flex items-center bg-industrial-gold text-deep-charcoal hover:bg-primary hover:text-white font-label-tech text-label-tech uppercase tracking-wider font-bold px-5 py-3 shadow-lg shadow-black/25 border-none rounded-none">
+<span class="icon-light inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">dark_mode</span> Donker design
+</span>
+<span class="icon-dark inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">light_mode</span> Licht design
+</span>
+</button>
+<!-- TopNavBar -->
+<nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-none bg-background/95 backdrop-blur-md border border-outline-variant z-50 transition-all duration-300">
+<div class="flex justify-between items-center px-gutter py-4">
+<div class="flex items-center gap-4">
+<a class="font-display-lg text-[24px] md:text-display-lg font-extrabold text-industrial-gold tracking-tight" href="#">DAROS METAAL</a>
+</div>
+<div class="hidden md:flex items-center gap-8 font-label-tech text-label-tech uppercase tracking-widest">
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#diensten">Services</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#machinepark">Machine Park</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#werkstukken">Work Portfolio</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#over">About</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-4 text-industrial-gold">
+<a class="hover:text-primary transition-colors flex items-center justify-center p-2 hover:bg-surface-container-highest rounded" href="tel:0402046734" aria-label="Bel ons">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">call</span>
+</a>
+<a class="hover:text-primary transition-colors flex items-center justify-center p-2 hover:bg-surface-container-highest rounded" href="mailto:info@darosmetaal.nl" aria-label="Mail ons">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">mail</span>
+</a>
+</div>
+<a class="hidden md:inline-block bg-industrial-gold text-deep-charcoal font-label-tech text-label-tech px-6 py-3 uppercase tracking-wider font-semibold hover:bg-primary transition-colors border-none rounded-none" href="#contact">
+                    Contact Us
+                </a>
+<button id="menu-toggle" class="md:hidden text-industrial-gold" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
+<span id="menu-icon" class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant bg-background/98 backdrop-blur-md">
+<div class="flex flex-col px-gutter py-4 font-label-tech text-label-tech uppercase tracking-widest">
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#diensten">Services</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#machinepark">Machine Park</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#werkstukken">Work Portfolio</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#over">About</a>
+<a class="mobile-link mt-4 bg-industrial-gold text-deep-charcoal text-center px-6 py-3 uppercase tracking-wider font-semibold hover:bg-primary transition-colors" href="#contact">Contact Us</a>
+<div class="flex gap-4 mt-4 text-industrial-gold">
+<a class="hover:text-primary transition-colors flex items-center gap-2 py-2" href="tel:0402046734"><span class="material-symbols-outlined">call</span> 040-2046734</a>
+<a class="hover:text-primary transition-colors flex items-center gap-2 py-2" href="mailto:info@darosmetaal.nl"><span class="material-symbols-outlined">mail</span> E-mail</a>
+</div>
+</div>
+</div>
+</nav>
+<!-- HERO SECTIE -->
+<header class="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-deep-charcoal">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center bg-no-repeat opacity-30" data-alt="A modern, high-precision CNC machine tool illuminated in a clean, industrial facility." style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsyeiaO3IKjUxrOeDtb-6WvtzvsUfP8vvpAmbCzwcNV9v3W9dcDpzlvEcZ0NVfl9neo5PYn-kaQ6E8sO9Iv5ibDhBdWl7SxfLG9p9WgJS10F4SJTCbn7cYnzVL2p-4GulwbD7J84APTotgR3plh_zwuK26BUOhpisk6OiTyV0jlgdDpi8PAU1SuOcMbknEfjjgT8ihpn9ZCs0eMNYOGdQJZnXrMCBdL2XjC5iN0imPZUV_gtLs1QWqvUFs');"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-deep-charcoal/90 via-transparent to-background"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto flex flex-col items-center">
+<div class="inline-block bg-slate-gray/80 backdrop-blur-sm border border-outline-variant px-4 py-1 mb-8">
+<span class="font-label-tech text-label-tech text-industrial-gold uppercase tracking-widest">Precision Engineering</span>
+</div>
+<h1 class="font-display-lg text-6xl md:text-8xl lg:text-[120px] font-extrabold text-white leading-none tracking-tighter mb-6">
+                DAROS <span class="text-primary-fixed-dim">METAAL</span>
+</h1>
+<p class="font-body-lg text-body-lg text-white/80 max-w-2xl mx-auto text-xl md:text-2xl mb-12">
+                Specialist in fijnmechanische onderdelen en seriematig draai- en freeswerk.
+            </p>
+<a class="bg-industrial-gold text-deep-charcoal font-label-tech text-label-tech px-8 py-4 uppercase tracking-wider font-bold hover:bg-primary transition-colors border-none rounded-none inline-flex items-center gap-2" href="#contact">
+                Neem Contact Op
+                <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<a href="#over" class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-white/60 hover:text-primary-fixed-dim transition-colors" aria-label="Scroll naar beneden">
+<span class="font-label-tech text-[10px] uppercase tracking-widest mb-2">Scroll</span>
+<span class="material-symbols-outlined">south</span>
+</a>
+</header>
+<main class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- SECTIE 2 - INTRODUCTIE -->
+<section class="py-section-gap reveal" id="over">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5 relative">
+<div class="aspect-square bg-slate-gray border border-outline-variant p-2 relative z-10">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of a precision machined metal part." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWO1h8-1a7gfip2n2OHOS5uSETEg_reMajp9NeIPltaiEczWQ0YKMOOQVLDGGTLZ-xYgKfISFHmm_3iyk_ATzyMiMGoMGLRM-BWWeGRnIAODvzsf4tMMG7a-YQZuuEG9grp33rSywJOz1qhHxzFVOydTpcPAjT5619kHXvgpQomyu25_a8EvBt1TWP3marVxLyixgvMjEHcS-GKM8DOMPn7aw0HVMx9j2ZTQMNmvFy_NA993RR9Uhrlg')"></div>
+</div>
+<div class="absolute -bottom-8 -right-8 w-64 h-64 border-r-2 border-b-2 border-industrial-gold/50 z-0 hidden lg:block"></div>
+</div>
+<div class="lg:col-span-1"></div>
+<div class="lg:col-span-6">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-6">Uw Partner in <span class="text-industrial-gold">Fijnmechanica</span></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">
+                        Welkom bij Daros Metaal, uw betrouwbare specialist voor het vervaardigen van fijnmechanische onderdelen, gevestigd in Valkenswaard. Met een diepgewortelde passie voor techniek en een focus op absolute precisie, leveren wij maatwerk van de hoogste kwaliteit.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface mb-8">
+                        Of het nu gaat om complexe enkelstuks of efficiënt seriematig werk, wij beschikken over de expertise en het geavanceerde machinepark om aan uw meest veeleisende specificaties te voldoen.
+                    </p>
+<div class="flex gap-4">
+<div class="bg-surface-container-low p-4 border border-outline-variant flex-1">
+<span class="font-display-lg block mb-1 text-3xl text-industrial-gold">2014</span>
+<span class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Opgestart</span>
+</div>
+<div class="bg-surface-container-low p-4 border border-outline-variant flex-1">
+<span class="font-display-lg block mb-1 text-3xl text-industrial-gold">μm</span>
+<span class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Precisie</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTIE 3 - DIENSTEN -->
+<section class="py-section-gap border-t border-outline-variant/20 reveal" id="diensten">
+<div class="mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
+<div class="max-w-2xl">
+<span class="font-label-tech text-label-tech text-industrial-gold uppercase tracking-widest block mb-2">Onze Expertise</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Precisie Bewerkingen</h2>
+</div>
+<a class="font-label-tech text-label-tech text-on-surface border-b border-industrial-gold pb-1 hover:text-industrial-gold transition-colors inline-flex items-center gap-2" href="#contact">
+                    Bespreek uw project <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Bento Card 1 -->
+<div class="bento-card p-8 flex flex-col h-full group">
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-4xl text-industrial-gold group-hover:scale-110 transition-transform">precision_manufacturing</span>
+<span class="font-label-tech text-label-tech text-outline bg-background px-2 py-1 text-[10px]">SVC-01</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-4">CNC Draaien</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-auto">
+                        Hoogwaardig CNC draaiwerk voor zowel enkelstuks als series. Optimale nauwkeurigheid gegarandeerd.
+                    </p>
+</div>
+<!-- Bento Card 2 -->
+<div class="bento-card p-8 flex flex-col h-full group">
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-4xl text-industrial-gold group-hover:scale-110 transition-transform">architecture</span>
+<span class="font-label-tech text-label-tech text-outline bg-background px-2 py-1 text-[10px]">SVC-02</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-4">CNC Frezen</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-auto">
+                        Complexe freesbewerkingen met meerassige machines voor de meest uitdagende geometrieën.
+                    </p>
+</div>
+<!-- Bento Card 3 -->
+<div class="bento-card p-8 flex flex-col h-full group lg:row-span-2">
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-4xl text-industrial-gold group-hover:scale-110 transition-transform">settings</span>
+<span class="font-label-tech text-label-tech text-outline bg-background px-2 py-1 text-[10px]">SVC-03</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background mb-4">Speciaalwerk</h3>
+<div class="mt-auto space-y-4">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Naast standaard bewerkingen zijn wij gespecialiseerd in:
+                        </p>
+<ul class="industrial-list font-body-md text-body-md text-on-surface-variant">
+<li>Assen</li>
+<li>Spiebanen steken</li>
+<li>Profiel bewerkingen</li>
+<li>Maatwerk assemblages</li>
+</ul>
+</div>
+</div>
+<!-- Bento Card 4 (Image Focus) -->
+<div class="bento-card p-0 md:col-span-2 overflow-hidden group relative min-h-[300px]">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="Abstract extreme macro shot of metal shavings and a cutting tool during a CNC milling process." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCB8Seq5WtJuCPQi3g_gyqRsGHNJsDkQV70iciyDxDOWmfZEoJMjw2lCW_fqgvKGV8JkNYoYOoinooE3IbGOZdRqzk5E-Zoq4ms9sUuwxEAVSczBfLblxe40GK1QdTRriEkpAHxMkwUbwAY_LHl32QRAmup9_32idh3rev3m5VXgBkfjdWIEotHagk90ZLGoyZOKckIfX11EdZXJje8MZTXLQ1pOwPHjsjRuLPwfBJg0_wczW4A4Y18YA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
+<div>
+<span class="font-label-tech text-label-tech text-industrial-gold mb-2 block">Materialen</span>
+<h3 class="font-title-md text-title-md text-on-background">Staal, RVS, Aluminium, Messing &amp; Kunststoffen</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTIE 4 - MACHINEPARK -->
+<section class="py-section-gap reveal" id="machinepark">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1">
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-[4/3] bg-slate-gray border border-outline-variant overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105" data-alt="A clean, wide shot of the Citizen M32 CNC machine in a well-lit workshop." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbPHbAenUiGUNFQFaUIoP9rtL1fB7OXwuTZT7v5NRM9B_BBTce-Nljq3e6CdA_uwILZ9EZCRpj4CkgXUgsz0o7DVxngpGfiQKSV7ylQ4Ov-KVrnQJtTnHOVNrJMT0ebr5dZyqE0uc9bB9lrXoHYr_oyaqudSNFaePzOa5jifE9dqxgdWFo7t8EYcKvfk7lKdKpUlyoRA51XAeYuU2qKDehiRlDCAAKCaZ1lFIimJ4uSKus7oQ_TfZZfw')"></div>
+</div>
+<div class="aspect-[4/3] bg-slate-gray border border-outline-variant overflow-hidden mt-8">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 hover:scale-105" data-alt="Close up of the tooling area inside a Citizen M32 CNC lathe." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPYhxq4BJkXpNHQvWPpd7BQSfW8RrrhHQz3fyGiynrKetmy6rVhjp-q0wEJ49mR1Egmtl496YiHMHc1k1GaqRmYWUds0nPJ6Rf3D7k6ko1pTZziYQr9J9YSJtLYed2tMCBGQID86ifS7pb-MhV8KeoE5Db7wE7WlJj01Ld_yG71W2D-vWYuOvVSDG9zt1rdIkS-s602fLAMfpkM7R1zyVz8coZjZplrcaYuKPruivS-1-wrAyo8VQrnA')"></div>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<span class="font-label-tech text-label-tech text-industrial-gold uppercase tracking-widest block mb-4">Capaciteit</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-8">Geavanceerd Machinepark</h2>
+<div class="bento-card p-8 mb-8 border-l-4 border-l-industrial-gold border-t-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-title-md text-title-md text-on-background">Citizen M32 - Langdraaier</h3>
+<span class="bg-background font-label-tech text-label-tech px-2 py-1 text-xs text-outline">CNC-01</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Onze trots in het machinepark is de Citizen M32, een hoogwaardige langdraaier die uitblinkt in het produceren van complexe onderdelen met uiterste precisie, ideaal voor seriematig werk.
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<span class="font-label-tech text-label-tech text-outline block text-xs mb-1">Max Diameter</span>
+<span class="font-body-md text-body-md text-on-background font-medium">32 mm</span>
+</div>
+<div>
+<span class="font-label-tech text-label-tech text-outline block text-xs mb-1">Assen</span>
+<span class="font-body-md text-body-md text-on-background font-medium">Meerassig systeem</span>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Daarnaast beschikken wij over een scala aan conventionele en CNC gestuurde draai- en freesbanken om een compleet pakket aan bewerkingen te kunnen aanbieden.
+                    </p>
+</div>
+</div>
+</section>
+<!-- SECTIE 5 - WERKSTUKKEN -->
+<section class="py-section-gap border-t border-outline-variant/20 reveal" id="werkstukken">
+<div class="text-center mb-16">
+<span class="font-label-tech text-label-tech text-industrial-gold uppercase tracking-widest block mb-2">Portfolio</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Gerealiseerde Projecten</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+<!-- Project 1 -->
+<div class="aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" data-alt="A custom machined metal bottle opener tool engraved with the word 'Daros'." style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsIsv5WfGUioE9K9YAp3AUp4zWCoCMrYUN-LJl4cqCa9T0r_mL2240zwj5Tcz1z2I6y2fA-w4aaHKt7OlaDGqun_r_1f_NUbIEIBTIuhi1JptiJLBTKH8K8m34-EbiA73SK_1xBBuMb6UsDvN1deiURTJSgTLxffRzWHxPqORvooYemrY4GRwKoEgmOYCY0EBnc1EFwBb6HixkojKIuNdYD349rWp8bkFKZ4o0lm-M0XLQCyZM1gfX8k1uL');"></div>
+<div class="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+<h4 class="font-title-md text-title-md text-on-background mb-2">Custom Tooling</h4>
+<p class="font-caption text-caption text-industrial-gold uppercase tracking-wider">Polijsten &amp; Graveren</p>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" data-alt="A collection of precision turned brass components arranged in a grid pattern." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDR9ZKVe1WPPhP3WQz8DSFs_NWURTCqIaFIuOTpVOq-kk7HXFArrRxkSri6gH3QFznYGIx5SrgcQ4Pl-NshCtERQriT1wVaAPvzhlKX0_osXAPIJnF5To6RWxA8UmVBrAaBSvODly-D5BslDxFfKwbMQYIR1gZh_OfuFOkWKqvI508eTWlcfODDe-hy0TvmB4VdiMudpaoaXBVWlW4Hw6MPQaHrv5B9JYwfTR7Run9dq3P7iScyjyfgCw')"></div>
+<div class="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+<h4 class="font-title-md text-title-md text-on-background mb-2">Messing Componenten</h4>
+<p class="font-caption text-caption text-industrial-gold uppercase tracking-wider">Serie Productie</p>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" data-alt="A complex stainless steel part featuring intricate cross-drilling and deep milling slots." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDsbTz-wk0MTFZJxHlDrK4maulhHF8mDrHOT9dXnJKRiXWvcIbpyKoos917afJGvthFuWjyt2gjKPgJ02ViuJZRBHm15wUJgIxinpbdUEPoQfoGFkQ7VcwVqfDvY4xz0hebh1f2DDxDr9fW8CYdJpVen_AZtIP8rqIcS5Yi0zJBItdL3Xz1OcqHbNtk8ermwzLrTJmP2QSqAMb3ExbnoxA9Y57D8JK5dyjyuVMD_2mBX1lPdv4OYkn-nA')"></div>
+<div class="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+<h4 class="font-title-md text-title-md text-on-background mb-2">Fijnmechanica RVS</h4>
+<p class="font-caption text-caption text-industrial-gold uppercase tracking-wider">Complexe Geometrie</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTIE 7 - CONTACT -->
+<section class="py-section-gap border-t border-outline-variant/20 reveal" id="contact">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+<div>
+<span class="font-label-tech text-label-tech text-industrial-gold uppercase tracking-widest block mb-4">Verbinding</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-8">Neem Contact Op</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-12">
+                        Heeft u een vraagstuk op het gebied van metaalbewerking of wilt u een offerte aanvragen? Wij staan klaar om met u mee te denken.
+                    </p>
+<div class="space-y-8">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-industrial-gold text-3xl mt-1">location_on</span>
+<div>
+<h4 class="font-title-md text-title-md text-on-background mb-1">Bezoekadres</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-industrial-gold transition-colors" href="https://www.google.com/maps/search/?api=1&amp;query=De+Vest+50+A+5555XP+Valkenswaard" target="_blank" rel="noopener">
+                                    De Vest 50 A<br/>
+                                    5555XP Valkenswaard
+                                </a>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-industrial-gold text-3xl mt-1" style="font-variation-settings: 'FILL' 1;">call</span>
+<div>
+<h4 class="font-title-md text-title-md text-on-background mb-1">Telefoon</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                    Vast: <a class="hover:text-industrial-gold transition-colors" href="tel:0402046734">040-2046734</a><br/>
+                                    Mobiel: <a class="hover:text-industrial-gold transition-colors" href="tel:0648212531">06-48212531</a>
+</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-industrial-gold text-3xl mt-1" style="font-variation-settings: 'FILL' 1;">mail</span>
+<div>
+<h4 class="font-title-md text-title-md text-on-background mb-1">E-mail</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-industrial-gold transition-colors" href="mailto:info@darosmetaal.nl">
+                                    info@darosmetaal.nl
+                                </a>
+</div>
+</div>
+</div>
+</div>
+<div class="bento-card p-8 md:p-12">
+<form id="contact-form" novalidate class="space-y-8">
+<div>
+<label class="font-label-tech text-label-tech text-outline block mb-2" for="name">Naam</label>
+<input class="input-industrial w-full py-3 px-0 font-body-md text-body-md" id="name" name="name" placeholder="Uw volledige naam" type="text" required/>
+</div>
+<div>
+<label class="font-label-tech text-label-tech text-outline block mb-2" for="email">E-mailadres</label>
+<input class="input-industrial w-full py-3 px-0 font-body-md text-body-md" id="email" name="email" placeholder="email@bedrijf.nl" type="email" required/>
+</div>
+<div>
+<label class="font-label-tech text-label-tech text-outline block mb-2" for="message">Bericht</label>
+<textarea class="input-industrial w-full py-3 px-0 font-body-md text-body-md resize-none" id="message" name="message" placeholder="Omschrijf uw project of vraag..." rows="4" required></textarea>
+</div>
+<button class="w-full bg-industrial-gold border-2 border-industrial-gold text-deep-charcoal hover:bg-primary hover:border-primary hover:text-white font-label-tech text-label-tech py-4 uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 group" type="submit">
+                            Verstuur Aanvraag
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+</button>
+<p id="form-status" class="font-label-tech text-label-tech text-center hidden"></p>
+</form>
+</div>
+</div>
+<!-- Map -->
+<a href="https://www.google.com/maps/search/?api=1&amp;query=De+Vest+50+A+5555XP+Valkenswaard" target="_blank" rel="noopener" class="mt-16 h-[400px] w-full border border-outline-variant bg-slate-gray relative overflow-hidden grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all duration-700 block">
+<div class="absolute inset-0 w-full h-full bg-cover bg-center" data-alt="A stylized, minimalist map showing the industrial zone of Valkenswaard, Netherlands." data-location="Valkenswaard" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5eOhDnKI_90Lr7JXIV7fC1fTTtpVhnTLIyiLUKw4N8opu0ehrnopvIb94jmGKu8KfbVpK11UNIjcJHGGOeEzTry-ASFNJjf3st66LDnxI7bO0JuHTbSDGXugHJD6CCd5F1Ofqw6z2gdrsF3MjHhX-6v3I9QqF7J2xQOO8iixWtYzmZtVIR3W6-KU-1IjVfje_OKQd-_8ODF4pOqiT9FEiG45_PYrEnMzp5tyDF3eO886rovQ9sGejow')"></div>
+<div class="absolute inset-0 bg-background/40 pointer-events-none"></div>
+<div class="absolute bottom-4 left-4 bg-background/90 px-4 py-2 border border-outline-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-industrial-gold">location_on</span>
+<span class="font-label-tech text-label-tech text-on-surface">Bekijk op Google Maps</span>
+</div>
+</a>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="max-w-7xl mx-auto px-margin-desktop py-base flex flex-col md:flex-row justify-between items-center gap-gutter min-h-[100px] py-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-display-lg text-2xl font-extrabold text-industrial-gold tracking-tight">DAROS METAAL</span>
+<p class="font-label-tech text-label-tech text-industrial-gold">
+                    © <span id="year">2024</span> DAROS METAAL. PRECISION ENGINEERING EXCELLENCE.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-6 font-label-tech text-label-tech">
+<a class="text-on-surface-variant hover:text-industrial-gold hover:underline decoration-industrial-gold underline-offset-4 transition-opacity duration-300" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-industrial-gold hover:underline decoration-industrial-gold underline-offset-4 transition-opacity duration-300" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-industrial-gold hover:underline decoration-industrial-gold underline-offset-4 transition-opacity duration-300" href="#">ISO Certification</a>
+<a class="text-on-surface-variant hover:text-industrial-gold hover:underline decoration-industrial-gold underline-offset-4 transition-opacity duration-300 flex items-center gap-1" href="#">
+                    LinkedIn <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+</div>
+</footer>
+<script>
+    (function () {
+        "use strict";
+
+        // ---- Huidig jaartal in de footer ----
+        var yearEl = document.getElementById("year");
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // ---- Thema-schakelaar (licht <-> donker) ----
+        var themeToggle = document.getElementById("theme-toggle");
+        function currentTheme() {
+            return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+        }
+        function applyTheme(theme) {
+            if (theme === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            } else {
+                document.documentElement.removeAttribute("data-theme");
+            }
+            try { localStorage.setItem("daros-theme", theme); } catch (e) {}
+        }
+        if (themeToggle) {
+            themeToggle.addEventListener("click", function () {
+                applyTheme(currentTheme() === "dark" ? "light" : "dark");
+            });
+        }
+
+        // ---- Mobiel menu openen/sluiten ----
+        var menuToggle = document.getElementById("menu-toggle");
+        var mobileMenu = document.getElementById("mobile-menu");
+        var menuIcon = document.getElementById("menu-icon");
+
+        function closeMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.add("hidden-menu");
+            menuToggle.setAttribute("aria-expanded", "false");
+            menuToggle.setAttribute("aria-label", "Menu openen");
+            if (menuIcon) menuIcon.textContent = "menu";
+        }
+        function openMenu() {
+            if (!mobileMenu) return;
+            mobileMenu.classList.remove("hidden-menu");
+            menuToggle.setAttribute("aria-expanded", "true");
+            menuToggle.setAttribute("aria-label", "Menu sluiten");
+            if (menuIcon) menuIcon.textContent = "close";
+        }
+        if (menuToggle) {
+            menuToggle.addEventListener("click", function () {
+                if (mobileMenu.classList.contains("hidden-menu")) openMenu();
+                else closeMenu();
+            });
+        }
+        // Sluit menu na klikken op een link
+        document.querySelectorAll(".mobile-link").forEach(function (link) {
+            link.addEventListener("click", closeMenu);
+        });
+        // Sluit menu bij Escape
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") closeMenu();
+        });
+
+        // ---- Navbar achtergrond bij scrollen ----
+        var navbar = document.getElementById("navbar");
+        function onScroll() {
+            if (!navbar) return;
+            if (window.scrollY > 40) {
+                navbar.classList.add("shadow-lg", "shadow-black/40");
+            } else {
+                navbar.classList.remove("shadow-lg", "shadow-black/40");
+            }
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+
+        // ---- Actieve nav-link markeren (scroll spy) ----
+        var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav-link"));
+        var sections = navLinks
+            .map(function (l) { return document.querySelector(l.getAttribute("href")); })
+            .filter(Boolean);
+
+        if ("IntersectionObserver" in window && sections.length) {
+            var spy = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        var id = entry.target.getAttribute("id");
+                        navLinks.forEach(function (l) {
+                            l.classList.toggle("active", l.getAttribute("href") === "#" + id);
+                        });
+                    }
+                });
+            }, { rootMargin: "-45% 0px -50% 0px" });
+            sections.forEach(function (s) { spy.observe(s); });
+        }
+
+        // ---- Reveal-on-scroll ----
+        var revealEls = document.querySelectorAll(".reveal");
+        if ("IntersectionObserver" in window) {
+            var revealObserver = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealEls.forEach(function (el) { revealObserver.observe(el); });
+        } else {
+            revealEls.forEach(function (el) { el.classList.add("visible"); });
+        }
+
+        // ---- Contactformulier: valideren en versturen via mailto ----
+        var form = document.getElementById("contact-form");
+        var status = document.getElementById("form-status");
+
+        function setStatus(msg, ok) {
+            if (!status) return;
+            status.textContent = msg;
+            status.classList.remove("hidden");
+            status.classList.toggle("text-industrial-gold", !!ok);
+            status.classList.toggle("text-error", !ok);
+        }
+
+        if (form) {
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                var name = form.name;
+                var email = form.email;
+                var message = form.message;
+                var valid = true;
+
+                [name, email, message].forEach(function (field) {
+                    field.classList.remove("invalid");
+                });
+
+                if (!name.value.trim()) { name.classList.add("invalid"); valid = false; }
+                var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+                if (!emailOk) { email.classList.add("invalid"); valid = false; }
+                if (!message.value.trim()) { message.classList.add("invalid"); valid = false; }
+
+                if (!valid) {
+                    setStatus("Vul alstublieft alle velden correct in.", false);
+                    return;
+                }
+
+                var subject = "Aanvraag via website - " + name.value.trim();
+                var body =
+                    "Naam: " + name.value.trim() + "\n" +
+                    "E-mail: " + email.value.trim() + "\n\n" +
+                    "Bericht:\n" + message.value.trim();
+
+                var mailto =
+                    "mailto:info@darosmetaal.nl" +
+                    "?subject=" + encodeURIComponent(subject) +
+                    "&body=" + encodeURIComponent(body);
+
+                window.location.href = mailto;
+                setStatus("Uw e-mailprogramma wordt geopend om de aanvraag te versturen.", true);
+                form.reset();
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
