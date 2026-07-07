@@ -286,9 +286,56 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* ===== Extra animaties ===== */
+        /* 1. Hero: langzame zoom + content die na elkaar infadet */
+        @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.12); } }
+        .hero-bg { animation: heroZoom 25s ease-in-out infinite alternate; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-anim > * { opacity: 0; animation: fadeUp 0.9s ease forwards; }
+        .hero-anim > *:nth-child(1) { animation-delay: 0.15s; }
+        .hero-anim > *:nth-child(2) { animation-delay: 0.30s; }
+        .hero-anim > *:nth-child(3) { animation-delay: 0.45s; }
+        .hero-anim > *:nth-child(4) { animation-delay: 0.60s; }
+
+        /* 2. Navbar wordt compacter bij scrollen */
+        .nav-inner { transition: padding 0.3s ease; }
+        #navbar.scrolled { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28); }
+        #navbar.scrolled .nav-inner { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+
+        /* 3. Gouden onderstreep onder menu-items */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0.75rem; right: 0.75rem; bottom: 0.35rem;
+            height: 2px;
+            background-color: rgb(var(--gold));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover::after, .nav-link.active::after { transform: scaleX(1); }
+
+        /* 4. Kaarten verschijnen na elkaar (stagger) */
+        .reveal .stagger-item { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible .stagger-item { opacity: 1; transform: translateY(0); }
+        .reveal.visible .stagger-item:nth-child(1) { transition-delay: 0.05s; }
+        .reveal.visible .stagger-item:nth-child(2) { transition-delay: 0.15s; }
+        .reveal.visible .stagger-item:nth-child(3) { transition-delay: 0.25s; }
+        .reveal.visible .stagger-item:nth-child(4) { transition-delay: 0.35s; }
+
+        /* 5. Portfolio-overlay schuift omhoog i.p.v. hard infaden */
+        .portfolio-overlay { opacity: 0; transform: translateY(40%); transition: opacity 0.4s ease, transform 0.4s ease; }
+        .group:hover .portfolio-overlay { opacity: 1; transform: translateY(0); }
+
         @media (prefers-reduced-motion: reduce) {
             html { scroll-behavior: auto; }
             .reveal { opacity: 1; transform: none; transition: none; }
+            .hero-bg { animation: none; }
+            .hero-anim > * { opacity: 1; animation: none; }
+            .reveal .stagger-item, .reveal.visible .stagger-item { opacity: 1; transform: none; transition: none; }
+            .portfolio-overlay { transition: none; }
+            .nav-link::after { transition: none; }
         }
     </style>
 </head>
@@ -307,15 +354,15 @@
 </button>
 <!-- TopNavBar -->
 <nav id="navbar" class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-none bg-background/95 backdrop-blur-md border border-outline-variant z-50 transition-all duration-300">
-<div class="flex justify-between items-center px-gutter py-4">
+<div class="nav-inner flex justify-between items-center px-gutter py-4">
 <div class="flex items-center gap-4">
 <a class="font-display-lg text-[24px] md:text-display-lg font-extrabold text-industrial-gold tracking-tight" href="#">DAROS METAAL</a>
 </div>
 <div class="hidden md:flex items-center gap-8 font-label-tech text-label-tech uppercase tracking-widest">
-<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#diensten">Services</a>
-<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#machinepark">Machine Park</a>
-<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#werkstukken">Work Portfolio</a>
-<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#over">About</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#over">Over ons</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#diensten">Diensten</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#machinepark">Machinepark</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#werkstukken">Werkstukken</a>
 </div>
 <div class="flex items-center gap-4">
 <div class="hidden md:flex gap-4 text-industrial-gold">
@@ -327,7 +374,7 @@
 </a>
 </div>
 <a class="hidden md:inline-block bg-industrial-gold text-deep-charcoal font-label-tech text-label-tech px-6 py-3 uppercase tracking-wider font-semibold hover:bg-primary transition-colors border-none rounded-none" href="#contact">
-                    Contact Us
+                    Contact
                 </a>
 <button id="menu-toggle" class="md:hidden text-industrial-gold" aria-label="Menu openen" aria-expanded="false" aria-controls="mobile-menu">
 <span id="menu-icon" class="material-symbols-outlined text-3xl">menu</span>
@@ -337,11 +384,11 @@
 <!-- Mobile menu -->
 <div id="mobile-menu" class="hidden-menu md:hidden border-t border-outline-variant bg-background/98 backdrop-blur-md">
 <div class="flex flex-col px-gutter py-4 font-label-tech text-label-tech uppercase tracking-widest">
-<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#diensten">Services</a>
-<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#machinepark">Machine Park</a>
-<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#werkstukken">Work Portfolio</a>
-<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#over">About</a>
-<a class="mobile-link mt-4 bg-industrial-gold text-deep-charcoal text-center px-6 py-3 uppercase tracking-wider font-semibold hover:bg-primary transition-colors" href="#contact">Contact Us</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#over">Over ons</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#diensten">Diensten</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#machinepark">Machinepark</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#werkstukken">Werkstukken</a>
+<a class="mobile-link mt-4 bg-industrial-gold text-deep-charcoal text-center px-6 py-3 uppercase tracking-wider font-semibold hover:bg-primary transition-colors" href="#contact">Contact</a>
 <div class="flex gap-4 mt-4 text-industrial-gold">
 <a class="hover:text-primary transition-colors flex items-center gap-2 py-2" href="tel:0402046734"><span class="material-symbols-outlined">call</span> 040-2046734</a>
 <a class="hover:text-primary transition-colors flex items-center gap-2 py-2" href="mailto:info@darosmetaal.nl"><span class="material-symbols-outlined">mail</span> E-mail</a>
@@ -352,10 +399,10 @@
 <!-- HERO SECTIE -->
 <header class="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden bg-deep-charcoal">
 <div class="absolute inset-0 z-0">
-<div class="w-full h-full bg-cover bg-center bg-no-repeat opacity-30" data-alt="A modern, high-precision CNC machine tool illuminated in a clean, industrial facility." style="background-image: url('images/hero.png');"></div>
+<div class="hero-bg w-full h-full bg-cover bg-center bg-no-repeat opacity-30" data-alt="A modern, high-precision CNC machine tool illuminated in a clean, industrial facility." style="background-image: url('images/hero.png');"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-deep-charcoal/90 via-transparent to-background"></div>
 </div>
-<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto flex flex-col items-center">
+<div class="hero-anim relative z-10 text-center px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto flex flex-col items-center">
 <div class="inline-block bg-slate-gray/80 backdrop-blur-sm border border-outline-variant px-4 py-1 mb-8">
 <span class="font-label-tech text-label-tech text-industrial-gold uppercase tracking-widest">Precision Engineering</span>
 </div>
@@ -396,7 +443,7 @@
                     </p>
 <div class="flex gap-4">
 <div class="bg-surface-container-low p-4 border border-outline-variant flex-1">
-<span class="font-display-lg block mb-1 text-3xl text-industrial-gold">2014</span>
+<span class="font-display-lg block mb-1 text-3xl text-industrial-gold" data-count="2014">2014</span>
 <span class="font-label-tech text-label-tech text-outline uppercase text-[10px]">Opgestart</span>
 </div>
 <div class="bg-surface-container-low p-4 border border-outline-variant flex-1">
@@ -420,7 +467,7 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 <!-- Bento Card 1 -->
-<div class="bento-card p-8 flex flex-col h-full group">
+<div class="stagger-item bento-card p-8 flex flex-col h-full group">
 <div class="flex justify-between items-start mb-12">
 <span class="material-symbols-outlined text-4xl text-industrial-gold group-hover:scale-110 transition-transform">precision_manufacturing</span>
 <span class="font-label-tech text-label-tech text-outline bg-background px-2 py-1 text-[10px]">SVC-01</span>
@@ -431,7 +478,7 @@
                     </p>
 </div>
 <!-- Bento Card 2 -->
-<div class="bento-card p-8 flex flex-col h-full group">
+<div class="stagger-item bento-card p-8 flex flex-col h-full group">
 <div class="flex justify-between items-start mb-12">
 <span class="material-symbols-outlined text-4xl text-industrial-gold group-hover:scale-110 transition-transform">architecture</span>
 <span class="font-label-tech text-label-tech text-outline bg-background px-2 py-1 text-[10px]">SVC-02</span>
@@ -442,7 +489,7 @@
                     </p>
 </div>
 <!-- Bento Card 3 -->
-<div class="bento-card p-8 flex flex-col h-full group lg:row-span-2">
+<div class="stagger-item bento-card p-8 flex flex-col h-full group lg:row-span-2">
 <div class="flex justify-between items-start mb-12">
 <span class="material-symbols-outlined text-4xl text-industrial-gold group-hover:scale-110 transition-transform">settings</span>
 <span class="font-label-tech text-label-tech text-outline bg-background px-2 py-1 text-[10px]">SVC-03</span>
@@ -461,7 +508,7 @@
 </div>
 </div>
 <!-- Bento Card 4 (Image Focus) -->
-<div class="bento-card p-0 md:col-span-2 overflow-hidden group relative min-h-[300px]">
+<div class="stagger-item bento-card p-0 md:col-span-2 overflow-hidden group relative min-h-[300px]">
 <div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="Abstract extreme macro shot of metal shavings and a cutting tool during a CNC milling process." style="background-image: url('images/materialen.png')"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
 <div class="absolute bottom-0 left-0 p-8 w-full flex justify-between items-end">
@@ -522,25 +569,25 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
 <!-- Project 1 -->
-<div class="aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
+<div class="stagger-item aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
 <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" data-alt="A custom machined metal bottle opener tool engraved with the word 'Daros'." style="background-image: url('images/portfolio-flesopener.png');"></div>
-<div class="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+<div class="portfolio-overlay absolute inset-0 bg-background/90 flex flex-col justify-center items-center p-6 text-center">
 <h4 class="font-title-md text-title-md text-on-background mb-2">Custom Tooling</h4>
 <p class="font-caption text-caption text-industrial-gold uppercase tracking-wider">Polijsten &amp; Graveren</p>
 </div>
 </div>
 <!-- Project 2 -->
-<div class="aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
+<div class="stagger-item aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
 <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" data-alt="A collection of precision turned brass components arranged in a grid pattern." style="background-image: url('images/portfolio-messing.png')"></div>
-<div class="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+<div class="portfolio-overlay absolute inset-0 bg-background/90 flex flex-col justify-center items-center p-6 text-center">
 <h4 class="font-title-md text-title-md text-on-background mb-2">Messing Componenten</h4>
 <p class="font-caption text-caption text-industrial-gold uppercase tracking-wider">Serie Productie</p>
 </div>
 </div>
 <!-- Project 3 -->
-<div class="aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
+<div class="stagger-item aspect-square bg-slate-gray relative group overflow-hidden border border-outline-variant/30">
 <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100" data-alt="A complex stainless steel part featuring intricate cross-drilling and deep milling slots." style="background-image: url('images/portfolio-rvs.png')"></div>
-<div class="absolute inset-0 bg-background/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center p-6 text-center">
+<div class="portfolio-overlay absolute inset-0 bg-background/90 flex flex-col justify-center items-center p-6 text-center">
 <h4 class="font-title-md text-title-md text-on-background mb-2">Fijnmechanica RVS</h4>
 <p class="font-caption text-caption text-industrial-gold uppercase tracking-wider">Complexe Geometrie</p>
 </div>
@@ -631,8 +678,9 @@
 <p class="font-label-tech text-label-tech text-on-surface-variant">KvK 60758287</p>
 </div>
 <div class="flex flex-wrap justify-center gap-6 font-label-tech text-label-tech">
-<a class="text-on-surface-variant hover:text-industrial-gold hover:underline decoration-industrial-gold underline-offset-4 transition-opacity duration-300 flex items-center gap-1" href="https://www.facebook.com/darosmetaal.nl/?locale=nl_NL" target="_blank" rel="noopener">
-                    Facebook <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+<a class="text-on-surface-variant hover:text-industrial-gold transition-colors flex items-center gap-2" href="https://www.facebook.com/darosmetaal.nl/?locale=nl_NL" target="_blank" rel="noopener" aria-label="Daros Metaal op Facebook">
+<svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+<span class="font-label-tech text-label-tech">Facebook</span>
 </a>
 </div>
 </div>
@@ -705,11 +753,7 @@
         var navbar = document.getElementById("navbar");
         function onScroll() {
             if (!navbar) return;
-            if (window.scrollY > 40) {
-                navbar.classList.add("shadow-lg", "shadow-black/40");
-            } else {
-                navbar.classList.remove("shadow-lg", "shadow-black/40");
-            }
+            navbar.classList.toggle("scrolled", window.scrollY > 40);
         }
         window.addEventListener("scroll", onScroll, { passive: true });
         onScroll();
@@ -748,6 +792,36 @@
             revealEls.forEach(function (el) { revealObserver.observe(el); });
         } else {
             revealEls.forEach(function (el) { el.classList.add("visible"); });
+        }
+
+        // ---- Cijfers laten optellen wanneer ze in beeld komen ----
+        var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var counters = document.querySelectorAll("[data-count]");
+        function animateCount(el) {
+            var target = parseInt(el.getAttribute("data-count"), 10);
+            if (isNaN(target)) return;
+            if (reduceMotion) { el.textContent = target; return; }
+            var duration = 1200, startTime = null;
+            function step(ts) {
+                if (startTime === null) startTime = ts;
+                var p = Math.min((ts - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(target * eased);
+                if (p < 1) requestAnimationFrame(step);
+                else el.textContent = target;
+            }
+            requestAnimationFrame(step);
+        }
+        if ("IntersectionObserver" in window && counters.length) {
+            var countObserver = new IntersectionObserver(function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        animateCount(entry.target);
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.6 });
+            counters.forEach(function (c) { countObserver.observe(c); });
         }
 
         // ---- Contactformulier: valideren en versturen via mailto ----
