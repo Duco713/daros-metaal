@@ -268,11 +268,16 @@
 
         /* Mobile menu animation */
         #mobile-menu {
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            overflow: hidden;
+            max-height: 80vh;
+            opacity: 1;
+            transition: max-height 0.35s ease, opacity 0.3s ease, transform 0.3s ease;
         }
         #mobile-menu.hidden-menu {
+            max-height: 0;
             opacity: 0;
             transform: translateY(-8px);
+            border-top-color: transparent;
             pointer-events: none;
         }
 
@@ -362,7 +367,7 @@
 <a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#over">Over ons</a>
 <a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#diensten">Diensten</a>
 <a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#machinepark">Machinepark</a>
-<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#werkstukken">Werkstukken</a>
+<a class="nav-link text-on-surface hover:text-industrial-gold transition-colors hover:bg-surface-container-highest px-3 py-2" href="#werkstukken">Portfolio</a>
 </div>
 <div class="flex items-center gap-4">
 <div class="hidden md:flex gap-4 text-industrial-gold">
@@ -387,7 +392,7 @@
 <a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#over">Over ons</a>
 <a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#diensten">Diensten</a>
 <a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#machinepark">Machinepark</a>
-<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#werkstukken">Werkstukken</a>
+<a class="mobile-link text-on-surface hover:text-industrial-gold transition-colors py-3 border-b border-outline-variant/40" href="#werkstukken">Portfolio</a>
 <a class="mobile-link mt-4 bg-industrial-gold text-deep-charcoal text-center px-6 py-3 uppercase tracking-wider font-semibold hover:bg-primary transition-colors" href="#contact">Contact</a>
 <div class="flex gap-4 mt-4 text-industrial-gold">
 <a class="hover:text-primary transition-colors flex items-center gap-2 py-2" href="tel:0402046734"><span class="material-symbols-outlined">call</span> 040-2046734</a>
