@@ -108,8 +108,8 @@
         (function () {
             try {
                 var saved = localStorage.getItem("daros-theme");
-                if (saved === "dark") {
-                    document.documentElement.setAttribute("data-theme", "dark");
+                if (saved === "dark" || saved === "purple") {
+                    document.documentElement.setAttribute("data-theme", saved);
                 }
             } catch (e) {}
         })();
@@ -166,6 +166,29 @@
             --input-line: 61 53 40;
             --input-focus-bg: 40 36 30;
             --placeholder: 133 122 104;
+        }
+        [data-theme="purple"] {
+            --bg: 58 13 39;             /* #3a0d27 originele site-paars */
+            --on-bg: 244 230 239;
+            --on-var: 216 188 203;
+            --card: 77 22 54;           /* iets lichter paars */
+            --line: 107 36 80;
+            --line2: 176 138 160;
+            --sc-high: 90 26 63;
+            --sc-low: 48 10 32;
+            --sc-lowest: 38 8 26;
+            --gold: 214 160 40;
+            --primary: 247 189 70;
+            --error: 255 180 171;
+
+            --card-border: 107 36 80;
+            --card-shadow: none;
+            --card-hover-bg: 90 26 63;
+            --card-hover-shadow: none;
+            --input-bg: 77 22 54;
+            --input-line: 107 36 80;
+            --input-focus-bg: 90 26 63;
+            --placeholder: 176 138 160;
         }
 
         html { scroll-behavior: smooth; }
@@ -236,9 +259,12 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
         }
         #theme-toggle:hover { transform: translateY(-2px); }
-        #theme-toggle .icon-dark { display: none !important; }
+        #theme-toggle .icon-dark,
+        #theme-toggle .icon-purple { display: none !important; }
         [data-theme="dark"] #theme-toggle .icon-light { display: none !important; }
         [data-theme="dark"] #theme-toggle .icon-dark { display: inline-flex !important; }
+        [data-theme="purple"] #theme-toggle .icon-light { display: none !important; }
+        [data-theme="purple"] #theme-toggle .icon-purple { display: inline-flex !important; }
 
         /* Mobile menu animation */
         #mobile-menu {
@@ -268,11 +294,14 @@
 </head>
 <body class="antialiased selection:bg-industrial-gold selection:text-deep-charcoal">
 <!-- Thema-schakelaar (licht <-> donker) -->
-<button id="theme-toggle" type="button" aria-label="Wissel tussen licht en donker design" class="fixed bottom-6 right-6 z-[60] flex items-center bg-industrial-gold text-deep-charcoal hover:bg-primary hover:text-white font-label-tech text-label-tech uppercase tracking-wider font-bold px-5 py-3 shadow-lg shadow-black/25 border-none rounded-none">
+<button id="theme-toggle" type="button" aria-label="Wissel tussen licht, donker en paars design" class="fixed bottom-6 right-6 z-[60] flex items-center bg-industrial-gold text-deep-charcoal hover:bg-primary hover:text-white font-label-tech text-label-tech uppercase tracking-wider font-bold px-5 py-3 shadow-lg shadow-black/25 border-none rounded-none">
 <span class="icon-light inline-flex items-center gap-2">
 <span class="material-symbols-outlined text-xl">dark_mode</span> Donker design
 </span>
 <span class="icon-dark inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">palette</span> Paars design
+</span>
+<span class="icon-purple inline-flex items-center gap-2">
 <span class="material-symbols-outlined text-xl">light_mode</span> Licht design
 </span>
 </button>
@@ -619,14 +648,16 @@
         var yearEl = document.getElementById("year");
         if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // ---- Thema-schakelaar (licht <-> donker) ----
+        // ---- Thema-schakelaar (licht -> donker -> paars -> ...) ----
         var themeToggle = document.getElementById("theme-toggle");
+        var themeOrder = ["light", "dark", "purple"];
         function currentTheme() {
-            return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+            var t = document.documentElement.getAttribute("data-theme");
+            return (t === "dark" || t === "purple") ? t : "light";
         }
         function applyTheme(theme) {
-            if (theme === "dark") {
-                document.documentElement.setAttribute("data-theme", "dark");
+            if (theme === "dark" || theme === "purple") {
+                document.documentElement.setAttribute("data-theme", theme);
             } else {
                 document.documentElement.removeAttribute("data-theme");
             }
@@ -634,7 +665,8 @@
         }
         if (themeToggle) {
             themeToggle.addEventListener("click", function () {
-                applyTheme(currentTheme() === "dark" ? "light" : "dark");
+                var idx = themeOrder.indexOf(currentTheme());
+                applyTheme(themeOrder[(idx + 1) % themeOrder.length]);
             });
         }
 
