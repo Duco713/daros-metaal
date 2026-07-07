@@ -291,6 +291,16 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Hero-hoogte: svh = echt zichtbare hoogte op mobiel (excl. browserbalk) */
+        .hero-section {
+            height: 100vh;
+            height: 100svh;
+            min-height: 560px;
+        }
+        @media (min-width: 768px) {
+            .hero-section { min-height: 800px; }
+        }
+
         /* ===== Extra animaties ===== */
         /* 1. Hero: langzame zoom + content die na elkaar infadet */
         @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.12); } }
@@ -402,7 +412,7 @@
 </div>
 </nav>
 <!-- HERO SECTIE -->
-<header class="relative w-full h-screen min-h-[600px] md:min-h-[800px] flex items-center justify-center overflow-hidden bg-deep-charcoal">
+<header class="hero-section relative w-full flex items-center justify-center overflow-hidden bg-deep-charcoal">
 <div class="absolute inset-0 z-0">
 <div class="hero-bg w-full h-full bg-cover bg-center bg-no-repeat opacity-30" data-alt="A modern, high-precision CNC machine tool illuminated in a clean, industrial facility." style="background-image: url('images/hero.png');"></div>
 <div class="absolute inset-0 bg-gradient-to-b from-deep-charcoal/90 via-transparent to-background"></div>
@@ -422,10 +432,12 @@
                 <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
-<a href="#over" class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-white/60 hover:text-primary-fixed-dim transition-colors" aria-label="Scroll naar beneden">
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+<a href="#over" class="flex flex-col items-center animate-bounce text-white/60 hover:text-primary-fixed-dim transition-colors" aria-label="Scroll naar beneden">
 <span class="font-label-tech text-[10px] uppercase tracking-widest mb-2">Scroll</span>
 <span class="material-symbols-outlined">south</span>
 </a>
+</div>
 </header>
 <main class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop">
 <!-- SECTIE 2 - INTRODUCTIE -->
